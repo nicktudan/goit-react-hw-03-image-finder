@@ -33,7 +33,7 @@ export class App extends Component {
       <Layout>
         <GlobalStyle />
         <Searchbar onSubmit={this.handleFormSubmit} />
-        <ImageGallery value={this.state.query} />
+        <ImageGallery query={this.state.query} />
 
         <ToastContainer />
       </Layout>
