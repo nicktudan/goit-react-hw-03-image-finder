@@ -63,7 +63,7 @@ export class ImageGallery extends Component {
 
     render() {
 
-        const {status, hits, showLoadMore} = this.state;
+        const {status, hits} = this.state;
         // const {status, error, images} = this.state;
 
         if (status === 'idel') {
@@ -86,7 +86,8 @@ export class ImageGallery extends Component {
         </Gallery>
         }
 
-        {showLoadMore && <Button onClick={this.handleOnClick} />}
+        <Button onClick={this.handleOnClick} />
+        // {showLoadMore && <Button onClick={this.handleOnClick} />}
         
 
         // return <>
