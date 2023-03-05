@@ -2,6 +2,7 @@ import { Component } from 'react';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { ToastContainer } from 'react-toastify';
 import { toast } from 'react-toastify';
+import * as Scroll from 'react-scroll';
 
 import { fetchImages } from '..//services/API';
 import { Searchbar } from './Searchbar/Searchbar';
@@ -12,6 +13,7 @@ import { Button } from './Button/Button';
 import { GlobalStyle } from "./GlobalStyle";
 import { Layout } from "./Layout";
 
+const scroll    = Scroll.animateScroll;
 
 export class App extends Component {
   state={
@@ -46,7 +48,7 @@ export class App extends Component {
 
 
             if(hits.length === 0) {
-                this.setState({ status: 'idel' });
+              this.setState({ status: 'idel' });
             }
 
             this.setState(prevState=>({ image: [...prevState.image, ...hits],
@@ -54,6 +56,8 @@ export class App extends Component {
             })) 
         } catch (error) {
             this.setState({ status: 'rejected' });
+        } finally {
+          this.setState({ status: 'resolved' });
         }
     }
 }
@@ -67,6 +71,7 @@ export class App extends Component {
 
   handleOnClick = () => {
     this.setState(prevState => ({ page: prevState.page + 1, }));
+    scroll.scrollMore(300);
   }
 
 
@@ -89,10 +94,7 @@ export class App extends Component {
         
         {showLoadMore && <Button onClick={this.handleOnClick} />}
 
-        {/* <ImageGallery query={this.state.query} /> */}
-        
-
-      <ToastContainer />
+        <ToastContainer />
         
       </Layout>
     );

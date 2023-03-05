@@ -9,18 +9,12 @@ export const ImageGallery = ({ image }) => {
                 key={img.id}  
                 smallImage={img.webformatURL}
                 largeImage={img.largeImageURL}
-                tags={img.tags} />
+                tags={img.tags}
+                />
             })}
             </Gallery>
 }
 
 ImageGallery.propTypes = {
-    images: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            webformatURL: PropTypes.string.isRequired,
-            largeImageURL: PropTypes.string.isRequired,
-            tags: PropTypes.string.isRequired,
-        })
-    ).isRequired,
+    image: PropTypes.array.isRequired,
 };
