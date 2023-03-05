@@ -13,7 +13,7 @@ import { Button } from './Button/Button';
 import { GlobalStyle } from "./GlobalStyle";
 import { Layout } from "./Layout";
 
-const scroll    = Scroll.animateScroll;
+const scroll = Scroll.animateScroll;
 
 export class App extends Component {
   state={
@@ -94,7 +94,7 @@ export class App extends Component {
         
         {showLoadMore && <Button onClick={this.handleOnClick} />}
 
-        <ToastContainer />
+        <ToastContainer autoClose={2000} style = { { width : "400px", fontSize: "16px" } } />
         
       </Layout>
     );
