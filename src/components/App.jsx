@@ -20,39 +20,29 @@ export class App extends Component {
     query: '',
     page: 1,
     image: [],
-    // error: null,
     status: 'idle',
     showLoadMore: false,
   }
 
   async componentDidUpdate(prevProps, prevState) {
-    // const { query, page } = this.state;
     const { query, page } = prevState;
     const nextQuery = this.state.query;
     const nextPage = this.state.page;
 
-    // if(prevState.query !== query || prevState.page !== page)
 
     if(query !== nextQuery || page !== nextPage) {
-        // this.setState({ query });
-        // console.log(prevState.query);
-        // console.log(this.state.query);
 
         this.setState({status: 'pending'});
-        // this.fetchImages();
 
         try {
             const { hits, totalHits } = await fetchImages(nextQuery, nextPage);
-            // const data = await fetchImages(query, page);
-            // console.log({ hits, totalHits });
-
 
             if(hits.length === 0) {
               this.setState({ status: 'idel' });
             }
 
             this.setState(prevState=>({ image: [...prevState.image, ...hits],
-            showLoadMore: page < Math.ceil(totalHits / 12)
+            showLoadMore: this.state.page < Math.ceil(totalHits / 12)
             })) 
         } catch (error) {
             this.setState({ status: 'rejected' });
@@ -63,7 +53,6 @@ export class App extends Component {
 }
 
   handleFormSubmit = query =>{
-    // console.log(query);
     this.setState({ query: query,
     page: 1,
     image: [], });
@@ -90,7 +79,8 @@ export class App extends Component {
 
         {status === 'rejected' && toast.error('Sorry, something went wrong. Please, try again')}
         
-        {status === 'resolved' && <ImageGallery image={image} />}
+        {/* {status === 'resolved' && <ImageGallery image={image} />} */}
+        <ImageGallery image={image} />
         
         {showLoadMore && <Button onClick={this.handleOnClick} />}
 
