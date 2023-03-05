@@ -1,4 +1,4 @@
-export async function fetchImages({ query, page }) {
+export async function fetchImages(query, page) {
 
     const BASE_URL = 'https://pixabay.com/api/';
     const API_KEY = '32948391-41e06186a421161778854822b';
@@ -10,6 +10,3 @@ export async function fetchImages({ query, page }) {
     }
     return await response.json();
 }
-
-
-// https://pixabay.com/api/?q=cat&page=1&key=your_key&image_type=photo&orientation=horizontal&per_page=12
