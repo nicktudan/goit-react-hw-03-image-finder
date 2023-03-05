@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { GalleryItem, GalleryItemImage } from './ImageGalleryItem.styled'
 
-export const ImageGalleryItem = ({ image, alt }) => {
+export const ImageGalleryItem = ({ smallImage, tags }) => {
     return <GalleryItem>
-        <GalleryItemImage src={image} alt={alt} />
+        <GalleryItemImage src={smallImage} alt={tags} />
     </GalleryItem>
 }
 

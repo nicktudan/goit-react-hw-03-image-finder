@@ -12,29 +12,29 @@ import {
 
 export class Searchbar extends Component {
     state = {
-        searchQuery: '',
+        query: '',
     };
 
     handleQueryChange = event => {
-        this.setState({ searchQuery: event.currentTarget.value.toLowerCase() });
+        this.setState({ query: event.currentTarget.value.toLowerCase() });
     }
 
     handleSubmit = event => {
         event.preventDefault();
 
-        if(this.state.searchQuery.trim() === '') {
+        if(this.state.query.trim() === '') {
             toast.error('Please, enter the search name!');
             return;
         }
 
-        this.props.onSubmit(this.state.searchQuery);
-        this.setState({ searchQuery: '' });
+        this.props.onSubmit(this.state.query);
+        this.setState({ query: '' });
     }
 
         render() {
-            return <SearchHeader onSubmit={this.handleSubmit}>
+            return <SearchHeader >
             
-                <SearchForm >
+                <SearchForm onSubmit={this.handleSubmit} >
                     <SearchFormBtn type="submit">
                         <FaSearch />
                     </SearchFormBtn>
@@ -44,8 +44,8 @@ export class Searchbar extends Component {
                         autocomplete="off"
                         autoFocus
                         placeholder="Search images and photos"
-                        name="searchQuery"
-                        value={this.state.searchQuery}
+                        name="query"
+                        value={this.state.query}
                         onChange={this.handleQueryChange}
                     />
                 </SearchForm>
