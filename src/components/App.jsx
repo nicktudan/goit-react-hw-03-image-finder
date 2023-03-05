@@ -9,6 +9,7 @@ import { ImageGallery } from './ImageGallery/ImageGallery'
 import { GlobalStyle } from "./GlobalStyle";
 import { Layout } from "./Layout";
 
+
 export class App extends Component {
   state={
     // imges: [],
@@ -16,14 +17,8 @@ export class App extends Component {
     page: 1,
   }
 
-  // componentDidMount(){
-  //   fetch('https://pixabay.com/api/?q=cat&page=1&key=32948391-41e06186a421161778854822b&image_type=photo&orientation=horizontal&per_page=12')
-  //   .then(response => response.json())
-  //   .then(imges => this.setState({ imges }));
-  // }
-
   handleFormSubmit = query =>{
-    console.log(query);
+    // console.log(query);
     this.setState({ query });
   };
 
